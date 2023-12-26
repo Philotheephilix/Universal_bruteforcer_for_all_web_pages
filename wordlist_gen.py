@@ -12,12 +12,12 @@ wordlist_dir='./Wordlists/'+wordlist_name+".txt"
 clr()
 fist=input("Enter the common guessed word : ")
 string.append(fist)
-op=input("Add Another (add atleast 10 strings to make the worlist powerfull) (Y/N)")
+op=input("Add Another (add atleast 10 strings to make the worlist powerfull) (Y/N) : ")
 opp='y'
 while((op in ['Y','y']) and (opp in ["Y","y"])):
-    fist=input("Enter guessed word ")
+    fist=input("Enter guessed word : ")
     string.append(fist)
-    opp=input("Add Another (add atleast 10 strings to make the worlist powerfull) (Y/N)")
+    opp=input("Add Another (add atleast 10 strings to make the worlist powerfull) (Y/N) : ")
 clr()
 years=int(input("Enter a year range used in password (Usually the year os establishment of the Organization) \nEnter starting year : "))
 yeare=int(input('Enter Current year :'))
@@ -51,5 +51,5 @@ with open(wordlist_dir, 'w', newline="") as csvfile:
                     count+=1
                     writer.writerow([trypass])
 count=str(count)
-print("worlist generated sucessfully\n Stored in \""+wordlist_dir+"\"")
+print("worlist generated sucessfully\nStored in \""+wordlist_dir+"\"")
 print("worlist contains "+count+" attempts")

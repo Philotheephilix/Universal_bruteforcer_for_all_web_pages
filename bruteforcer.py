@@ -2,8 +2,8 @@ import pyautogui as py
 import time
 import os
 import linecache
-string=['all','usernames']
-
+from name_grapix import name
+name()
 def mover():
     py.press('tab')
     return True
