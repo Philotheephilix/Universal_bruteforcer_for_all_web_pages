@@ -1,6 +1,6 @@
 import csv
 int=[]
-string=['Test','licet','Licet','LICETADMIN','licetadmin','LICET','Loyola','LICAM','Icam','test','server','admin','hp','aruba','I11','i11','admin','LOHO2','loho','loho2']
+string=['all','usernames']
 print(len(string))
 for i in range(2009,2024):
     i=str(i)

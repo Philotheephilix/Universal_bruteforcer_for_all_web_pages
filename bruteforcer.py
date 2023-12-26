@@ -2,7 +2,7 @@ import pyautogui as py
 import time
 import os
 import linecache
-string=['Test','licet','Licet','LICETADMIN','licetadmin','LICET','Loyola','LICAM','Icam','test','server','admin','hp','aruba','admin','LOHO2','loho','loho2']
+string=['all','usernames']
 
 def mover():
     py.press('tab')
