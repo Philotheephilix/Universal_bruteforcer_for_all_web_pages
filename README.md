@@ -1,4 +1,4 @@
-# Universal_bruteforcer_for_all_web_pages
+# Universal_bruteforcer for all web pages with wordlist generator
  this python utility contains script to bruteforce any web site by providing credential field position and wordlist
 # Bruteforcer
 
@@ -35,3 +35,4 @@ The tool is still under development and may have some bugs or limitations. Some 
 - Customizable delay and timeout settings
 - Proxy and VPN support
 - User interface and documentation improvements
+Feel free to Fork and develop or contribute to this repo
