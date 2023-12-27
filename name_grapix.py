@@ -50,7 +50,7 @@ def name():
     bordered_made_by = create_bordered_text(made_by_text.center(45))
 
     # Combine all bordered text into one layout
-    full_layout = bordered_welcome + '\n\n' + ptp_art + '\n\n' + bordered_made_by
+    full_layout = bordered_welcome + '\n' + ptp_art + '\n' + bordered_made_by
 
     # Create a giant border around the whole layout
     full_layout_bordered = create_bordered_text(full_layout)
