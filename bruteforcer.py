@@ -2,7 +2,7 @@ import pyautogui as py
 import time
 import os
 
-
+#imported code initial grapix
 from name_grapix import name
 name()
 n=input("Do you want to continue (Y/N) : ")
@@ -10,6 +10,9 @@ if n in ['Y','y']:
     pass
 else:
     exit()
+
+
+#defined most useed commands as a function
     
 def clr():
     os.system('cls')
@@ -18,10 +21,14 @@ list=os.listdir('./Wordlists')
 def mover():
     py.press('tab')
     return True
-wordlist="wordlist.txt"
+
 print("Your scrren resolution:",py.size())
 listoffield=[]
 submitpos=[]
+
+
+#mode selection page code
+
 print("Choose Bruteforce Option \n1.Tabber\n2.Position-clicker\n3.Exit\nKnow more about the options on Github page ")
 mode=int(input("Enter ur choice : "))
 clr()
@@ -31,6 +38,9 @@ def wordlist_list():
         print(i,".",list[i])
 user_word=''
 pass_word=''
+
+
+#Worlist selecter function
 def word_sel():
     wordlist_list()
     global user_word,pass_word
@@ -39,6 +49,8 @@ def word_sel():
     pass_word_I=int(input("Select a wordlist for password field : "))
     pass_word="./Wordlists/"+list[pass_word_I]
 
+
+#function to get mouse positio
 def position_getter():
     for i in range(2):
         clr()
@@ -62,6 +74,8 @@ def position_getter():
     print(listoffield)
     print(submitpos)
 
+
+#main bruteforcer function for tabber mode
 def bruteforcer():
     with open(pass_word, 'r', newline="") as csvfile:
         with open(user_word,'r',newline='') as csvuser:
@@ -89,6 +103,9 @@ def bruteforcer():
                                 py.press("enter")
                                 time.sleep(.2)
                             print(i)
+
+
+#main bruteforcer function for position clicker mode
 def posbruteforcer():
     with open(pass_word, 'r', newline="") as csvfile:
         with open(user_word,'r',newline='') as csvuser:
@@ -112,6 +129,8 @@ def posbruteforcer():
                     #py.click(submitpos[0][0],submitpos[0][1])
                     time.sleep(.2)
 word_sel()
+
+#mode selector 
 if mode==1:
     bruteforcer()
 elif mode==2:
