@@ -13,7 +13,20 @@ Bruteforcer is a tool that automates the process of guessing passwords or other 
 - Customizable delay and timeout settings (planned)
 - Proxy and VPN support (planned)
 - User interface and documentation improvements (planned)
+## Requirments
+- Python 11+
+- Pyautogui and pynput --pip-modules
 
+
+Install all required pip modules by running this command in the tool's directory
+
+     pip install -r requirments.txt
+## Installation
+- Clone this repository or download as zip
+- install all the required python modules using pip
+- Extract the zip
+- Place all the wordlist in /Wordlists folder 
+- Run Wordlist_gen.py to generate a custom Wordlist (or) Run Bruteforcer.py and follow the terminal wizard to attack
 ## Tab clicker mode
 
 In this mode, the tool uses the tab key to navigate between the input fields and the submit button. It tries different combinations of usernames and passwords from a given list until it finds a match or reaches the end of the list.
