@@ -131,28 +131,40 @@ def bruteforcer():
 
 #main bruteforcer function for position clicker mode
 def posbruteforcer():
-    with open(pass_word, 'r', newline="") as csvfile:
-        with open(user_word,'r',newline='') as csvuser:
-            content = csvfile.readlines() 
-            usertry=csvuser.readlines()
-            print("Open the bruteforce target page in 10s")
-            time.sleep(10)
-            for i in range(len(content)):
-                cur_user=usertry[i]
-                for j in range(len(content)):
-                    cur_pass=content[j]
-                    py.click(listoffield[0][0],listoffield[0][1])
-                    time.sleep(.01)
-                    py.write(cur_user)
-                    time.sleep(.01)
-                    py.click(listoffield[1][0],listoffield[1][1])
-                    time.sleep(.01)
-                    py.write(cur_pass[0:-1])
-                    py.click(submitpos[0][0],submitpos[0][1])
-                    #time.sleep(3)
-                    #py.click(submitpos[0][0],submitpos[0][1])
-                    time.sleep(.2)
-word_sel()
+    global breaker
+    with keyboard.Listener(on_press=failsafe) as listener:
+        with open(pass_word, 'r', newline="") as csvfile:
+            with open(user_word,'r',newline='') as csvuser:
+                content = csvfile.readlines() 
+                usertry=csvuser.readlines()
+                print("Open the bruteforce target page in 10s")
+                time.sleep(10)
+                for i in range(len(content)):
+                    cur_user=usertry[i]
+                    for j in range(len(content)):
+                        if not breaker:
+                            cur_pass=content[j]
+                            py.click(listoffield[0][0],listoffield[0][1])
+                            time.sleep(.01)
+                            py.write(cur_user)
+                            time.sleep(.01)
+                            py.click(listoffield[1][0],listoffield[1][1])
+                            time.sleep(.01)
+                            py.write(cur_pass[0:-1])
+                            py.click(submitpos[0][0],submitpos[0][1])
+                            #time.sleep(3)
+                            #py.click(submitpos[0][0],submitpos[0][1])
+                            time.sleep(.2)
+                        else:
+                            resume=input("Press Enter Key to resume type exit to exit")
+                            if resume not in ["EXIT","Exit","exit"]:
+                                print("Resuming in 10s")
+                                time.sleep(10)
+                                breaker=False
+                            else:
+                                break
+        listener.join()
+word_sel()  
 
 #mode selector 
 if mode==1:
