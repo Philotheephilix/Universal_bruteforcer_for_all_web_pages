@@ -3,6 +3,13 @@ import time
 import os
 from pynput import keyboard
 
+
+
+
+
+
+
+
 #imported code initial grapix
 from name_grapix import name
 name()
@@ -57,6 +64,9 @@ def word_sel():
     user_word="./Wordlists/"+list[user_word_I]
     pass_word_I=int(input("Select a wordlist for password field : "))
     pass_word="./Wordlists/"+list[pass_word_I]
+
+
+
 
 
 #function to get mouse positio
